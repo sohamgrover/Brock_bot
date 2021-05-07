@@ -1,0 +1,252 @@
+import datetime
+import pyjokes
+import pyttsx3
+import pywhatkit
+import speech_recognition as sr
+import wikipedia
+from GoogleNews import GoogleNews
+import playsound
+
+playsound.playsound(r'C:\Users\Hp\Downloads\beforeMic.mp3', True)
+
+listener = sr.Recognizer()
+engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+newVoiceRate = 135
+engine.setProperty('rate', newVoiceRate)
+true = 0
+
+def talk(text):
+    engine.say(text)
+    engine.runAndWait()
+def take_command():
+    try:
+        with sr.Microphone() as source:
+            voice = listener.listen(source)
+            command = listener.recognize_google(voice)
+            command = command.lower()
+            if 'brock' not in command:
+                command.replace(command, 'null')
+                true = 0
+            elif 'brock' in command:
+                print('listening...')
+                command = command.replace('brock', '')
+                print(command)
+                true = 1
+
+    except:
+        pass
+    return command
+playsound.playsound(r'C:\Users\Hp\Downloads\beforeMic.mp3', False)
+def run_brock():
+     command = take_command()
+     print(command)
+     talk('Speak now')
+     if true == 1:
+      if 'on youtube' in command:
+        song = command.replace('on youtube', '')
+        song2 = command.replace('play', '')
+        talk('Ok, I found a YouTube video on: ' + song + '. I hope I heard it correct!')
+        pywhatkit.playonyt(song)
+     elif 'youtube' in command:
+        song = command.replace('youtube', '')
+        song2 = command.replace('play', '')
+        talk('Ok, I found a YouTube video on: ' + song + '. I hope I heard it correct!')
+        pywhatkit.playonyt(song)
+     elif 'play ' in command:
+        song = command.replace('play', '')
+        talk('playing ' + song)
+        pywhatkit.playonyt(song)
+     elif ' time' in command:
+        time = datetime.datetime.now().strftime('%I:%M %p')
+        talk('Current time is ' + time)
+     elif 'who ' in command:
+        person = command.replace('who', '')
+        info = wikipedia.summary(person, 1)
+        print(info)
+        talk(info)
+     elif 'joke' in command:
+        talk(pyjokes.get_joke())
+        print(pyjokes.get_joke())
+     elif 'lol' in command:
+        talk(pyjokes.get_joke())
+        print(pyjokes.get_joke())
+     elif 'funny' in command:
+        talk(pyjokes.get_joke())
+        print(pyjokes.get_joke())
+     elif 'what' in command:
+        person = command.replace('what', '')
+        info = wikipedia.summary(person, 1)
+        print(info)
+        talk(info)
+     elif 'how' in command:
+        person = command.replace('how', '')
+        info = wikipedia.summary(person, 1)
+        print(info)
+        talk(info)
+     elif 'where' in command:
+        person = command.replace('where', '')
+        info = wikipedia.summary(person, 1)
+        print(info)
+        talk(info)
+     elif 'ok' in command:
+        person = command.replace('ok', 'ok')
+        print('ok')
+        talk('ok')
+     elif 'hack nasa' in command:
+        person = command.replace('hack nasa', 'hacking nasa')
+        print('Hacking Nasa Servers...')
+        print('Gathering info...')
+        print('Access Granted...')
+        print('NASA HAS SUCCESSFULLY BEEN HACKED!!!')
+        talk('Hacking Nasa Servers...' + ', Gathering info...' + ', Access Granted...'
+             + 'NASA HAS SUCCESSFULLY BEEN HACKED!!!')
+     elif 'when' in command:
+        person = command.replace('when', '')
+        info = wikipedia.summary(person, 1)
+        print(info)
+        talk(info)
+     elif 'volume' and '1' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.1
+        talk('Okay, I changed my volume to one.')
+     elif 'volume' and 'one' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.1
+        talk('Okay, I changed my volume to one.')
+     elif 'volume' and '2' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.2
+        talk('Okay, I changed my volume to two.')
+     elif 'volume' and 'two' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.2
+        talk('Okay, I changed my volume to two.')
+     elif 'volume' and '3' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.3
+        talk('Okay, I changed my volume to three.')
+     elif 'volume' and 'three' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.3
+        talk('Okay, I changed my volume to three.')
+     elif 'volume' and '4' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.4
+        talk('Okay, I changed my volume to four.')
+     elif 'volume' and 'four' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.4
+        talk('Okay, I changed my volume to four.')
+     elif 'volume' and '5' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.5
+        talk('Okay, I changed my volume to five.')
+     elif 'volume' and 'five' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.5
+        talk('Okay, I changed my volume to five.')
+     elif 'volume' and '6' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.6
+        talk('Okay, I changed my volume to six.')
+     elif 'volume' and 'six' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.6
+        talk('Okay, I changed my volume to six.')
+     elif 'volume' and '7' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.7
+        talk('Okay, I changed my volume to seven.')
+     elif 'volume' and 'seven' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.7
+        talk('Okay, I changed my volume to seven.')
+     elif 'volume' and '8' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.8
+        talk('Okay, I changed my volume to eight.')
+     elif 'volume' and 'eight' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.8
+        talk('Okay, I changed my volume to eight.')
+     elif 'volume' and '9' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.9
+        talk('Okay, I changed my volume to nine.')
+     elif 'volume' and 'nine' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 0.9
+        talk('Okay, I changed my volume to nine.')
+     elif 'volume' and '10' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 1
+        talk('Okay, I changed my volume to ten.')
+     elif 'volume' and 'ten' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = 1
+        talk('Okay, I changed my volume to ten.')
+     elif 'increase' and 'volume' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = + 1
+        talk('Okay, Volume increased by one!')
+     elif 'decrease' and 'volume' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        newVolume = - 1
+        talk('Okay, volume decreased by one')
+     elif 'what' and 'volume' in command:
+        print(command)
+        volume = engine.getProperty('volume')
+        talk('The volume is ' + volume)
+     elif 'news' in command:
+        person = command.replace('news', '')
+        talk('okay, news')
+        googlenews = GoogleNews()
+        googlenews = GoogleNews(lang='en')
+        googlenews = GoogleNews(period='20h')
+        googlenews = GoogleNews(encode='utf-8')
+        talk('Okay, you will hear news in a few seconds as they are getting loaded.')
+        googlenews.get_news(command)
+        googlenews.search(command)
+        googlenews = GoogleNews(start='29/03/2021', end='30/03/2021')
+        googlenews.get_page(0)
+        result = googlenews.page_at(0)
+        totalCount = googlenews.total_count()
+        totalCount = 1
+        talk('It is still loading')
+        results = googlenews.results()
+        getText = googlenews.get_texts()
+        getLinks = googlenews.get_links()
+        print(getText)
+        talk('The results were finally loaded. You will hear the news in three! two! one!')
+        talk(getText)
+     elif 'eat' in command:
+        talk('Nah, I am full')
+     else:
+        talk('damn')
+
+while True:
+    run_brock()
